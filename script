@@ -1,68 +1,47 @@
-(async () => {
-  try {
-    console.log("Starting LinkedIn profile scraping...");
-
-    const schema = {
-      basics: {
-        name: "",
-        label: "",
-        image: "",
-        email: "",
-        phone: "",
-        url: "",
-        summary: "",
-        location: {
-          address: "",
-          postalCode: "",
-          city: "",
-          countryCode: "",
-          region: ""
-        },
-        profiles: []
-      },
-      work: [],
-      education: [],
-      skills: [],
-      languages: [],
-      projects: [],
-      meta: {}
-    };
-
-    // Check if elements exist before accessing them
-    const nameElement = document.querySelector('.top-card-layout__title');
-    if (!nameElement) {
-      console.error("Name element not found. Check the selector.");
-    } else {
-      schema.basics.name = nameElement.textContent.trim();
-      console.log("Name:", schema.basics.name);
+[
+  {
+    "timestamp": "19-12-2024, 03:55:40",
+    "status": "SUCCESS",
+    "name": "Trigger",
+    "description": "NULL",
+    "message": "NULL",
+    "data": {
+      "referenceData": {
+        "loopData": {},
+        "variables": {},
+        "activeTabUrl": "",
+        "prevBlockData": ""
+      }
     }
-
-    // Example: Scraping location
-    const locationElement = document.querySelector('.top-card-layout__location');
-    if (!locationElement) {
-      console.error("Location element not found. Check the selector.");
-    } else {
-      const locationText = locationElement.textContent.trim();
-      const [city, region] = locationText.split(',').map(s => s.trim());
-      schema.basics.location.city = city || "";
-      schema.basics.location.region = region || "";
-      console.log("Location:", schema.basics.location);
+  },
+  {
+    "timestamp": "19-12-2024, 03:55:40",
+    "status": "SUCCESS",
+    "name": "Active tab",
+    "description": "NULL",
+    "message": "NULL",
+    "data": {
+      "referenceData": {
+        "loopData": {},
+        "variables": {},
+        "activeTabUrl": "https://www.linkedin.com/in/stefanhugo/",
+        "prevBlockData": ""
+      }
     }
-
-    // Log the final schema for inspection
-    console.log("Extracted Schema:", schema);
-
-    // Download the schema as JSON
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(schema, null, 2));
-    const downloadAnchor = document.createElement('a');
-    downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", "linkedin-profile.json");
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
-
-    console.log("Profile data extraction completed.");
-  } catch (error) {
-    console.error("Error during script execution:", error);
+  },
+  {
+    "timestamp": "19-12-2024, 03:55:40",
+    "status": "ERROR",
+    "name": "JavaScript code",
+    "description": "NULL",
+    "message": "Cannot read properties of undefined (reading 'data')",
+    "data": {
+      "referenceData": {
+        "loopData": {},
+        "variables": {},
+        "activeTabUrl": "https://www.linkedin.com/in/stefanhugo/",
+        "prevBlockData": ""
+      }
+    }
   }
-})();
+]
